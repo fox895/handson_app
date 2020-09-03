@@ -1,0 +1,35 @@
+html
+  head
+    title= "HandsOn"
+  body
+    div
+     h1 You can use your data!!!
+     h5 or perhaps use our test data
+     h3 Please insert a valid .csv file
+     form(
+      action="/file_upload",
+      enctype="multipart/form-data",
+      method="POST",
+      )
+      input(
+       type='file',
+       name='myFile',
+       )
+      input(type='submit', value="Upload")
+     p #{updateSuccess}
+
+    div
+     h2 Result Section
+    div
+     form(action="/run", method="POST") 
+      input(
+      type='checkbox',
+      name='testdata',
+      checked = !fileIsUpdated,
+      value="true",
+      style='margin-right: 20px;',
+      )
+      label Use sample data?
+      
+      input(type="submit", value="Run and wait!")
+      h6 maximum 7 minutes wait... sorry...
